@@ -56,3 +56,15 @@
 
 ### 4️⃣ Run the Application  
 Open your browser and navigate to:  
+
+
+## Languages
+
+| Language  **: 0.1% (light blue dot)
+- **Batchfile**: 0. | Percentage |
+|------------|-----------|
+| 🟧 SCSS   0% (yellow-green dot)
+
+Above this section, the "Packages" area indicates that no packages have been published for this repository. The overall theme is dark, typical of | 52.5%     |
+| 🟥 HTML    | 39.2%     |
+| 🟦 Python (D GitHub’s dark mode interface.
