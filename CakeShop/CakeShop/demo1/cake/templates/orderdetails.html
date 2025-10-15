@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>CakeStudio - Order Details</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Oswald:wght@500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: white !important;
+        }
+
+        .navbar .nav-link {
+            color: black;
+        }
+
+        .navbar .nav-link:hover {
+            color: #007bff;
+        }
+
+        .order-details-container {
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #ff8c00; /* Entire box outline */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ff8c00; /* Field outline */
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #ff8c00;
+            box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+        }
+
+        .btn-primary {
+            background-color: #ff8c00;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #cc6e00;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-3 px-3">
+        <a href="index.html" class="navbar-brand">
+            <h1 class="m-0 text-uppercase"><i class="fa fa-birthday-cake fs-1 text-primary me-3"></i>Sprinkle Delights</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto mx-lg-auto py-0">
+                <a href="{% url 'showindex' %}" class="nav-item nav-link active">Home</a>
+                <a href="{% url 'viewcake' %}" class="nav-item nav-link">View Cake</a>
+                <a href="{% url 'insertorder' %}" class="nav-item nav-link">Order</a>
+                <a href="{% url 'viewdelivery' %}" class="nav-item nav-link">View Delivery</a>
+                <a href="{% url 'showindex' %}" class="nav-item nav-link">Change Password</a>
+                <a href="{% url 'logcheck' %}" class="nav-item nav-link">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-white p-5 mb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 text-uppercase" style="color: black;">Order Details</h1>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Order Details Start -->
+    <div class="container">
+        <div class="order-details-container">
+             <form method="POST" action="{% url 'insertorder' %}" >
+                {% csrf_token %}
+                 {% for r in userdict %}
+                <div class="form-group">
+                    <label for="orderId">Order Id</label>
+                    <input type="text" class="form-control" value="{{pid}}" readonly id="orderId" name="t1">
+                </div>
+                <div
+                        class="form-group">
+                    <label for="customerId">Customer Id</label>
+                     <input type="text" class="form-control" id="customerId" value="{{uname}}" name="t2">
+                </div>
+                <div class="form-group">
+                    <label for="cakeId">Cake Id</label>
+                    <input type="text" class="form-control" id="cakeId" name="t3" value="{{ r.cakeid }}">
+                </div>
+                <div class="form-group">
+                    <label for="bookingDate">Booking Date</label>
+                    <input type="text" class="form-control" id="bookingDate" name="t4" value="{{request_date}}">
+                </div>
+                <div class="form-group">
+                    <label for="totalDate">Total weight</label>
+                    <input type="text" class="form-control" id="totalDate" name="t5">
+                </div>
+                <div class="form-group">
+                    <label for="cost">Cost</label>
+                     <input type="text" class="form-control" id="cost" name="t6" value="{{r.cost_pe_kg}}">
+                </div>
+                <div class="form-group">
+                    <label for="issueDate">Issue Date</label>
+                    <input type="text" class="form-control" id="issueDate" name="t7">
+                </div>
+                <div class="form-group">
+                    <label for="deliveryType">Delivery Cost</label>
+                    <input type="text" class="form-control" id="deliveryType" value="30" name="t8">
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary w-50 py-2" type="submit">Place Order</button>
+                </div>{% endfor %}
+            </form>
+        </div>
+    </div>
+    <!-- Order Details End -->
+</body>
+
+</html>

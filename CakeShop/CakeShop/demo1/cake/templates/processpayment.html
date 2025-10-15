@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <title>CakeStudio - Delivery Details</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Oswald:wght@500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        /* ... (keep your existing styles the same) ... */
+    </style>
+</head>
+
+<body>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-3 px-3">
+        <a href="{% url 'processpayment' %}" class="navbar-brand">
+            <h1 class="m-0 text-uppercase"><i class="fa fa-birthday-cake fs-1 text-primary me-3"></i>Sprinkle Delights</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto mx-lg-auto py-0">
+                <a href="{% url 'showindex' %}" class="nav-item nav-link active">Home</a>
+                <a href="{% url 'viewcake' %}" class="nav-item nav-link">View Cake</a>
+                <a href="{% url 'viewdelivery' %}" class="nav-item nav-link">View Delivery</a>
+                <a href="{% url 'changepassword' %}" class="nav-item nav-link">Change Password</a>
+                <a href="{% url 'logcheck' %}" class="nav-item nav-link">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <!-- Page Header End -->
+
+
+    &nbsp;
+
+
+    &nbsp;
+
+    <center>
+ <div class="col-lg-6">
+    <div class="card p-4 shadow-sm">
+        <section class="section section1 text-center">
+            <img src="{% static 'img/payment_loading.gif' %}" alt="Processing Payment..." class="img-fluid mb-3" style="width: 500px;">
+            <h4>Processing your payment...</h4>
+            <p>Please wait while we confirm your order and bake some magic!</p>
+        </section>
+
+        <section class="section section3 text-center d-none">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 10rem;"></i>
+            <h4 class="mt-3">Payment Successful</h4>
+            <p>Your order <strong>{{ order.ref_no }}</strong> has been confirmed.</p>
+            <p>We'll notify you once it's out for delivery. 🍰</p>
+            <a href="{% url 'showindex' %}" class="btn btn-danger mt-2">Back to Home</a>
+            <form action="{% url 'showindex' %}" method="get" target="_blank" class="mt-3">
+                <input type="hidden" name="ref" value="{{ order.id }}">
+            </form>
+        </section>
+
+
+    </div>
+</div>
+    </center>
+
+<div>
+    <style>
+  .custom-button
+  {
+    background-color: orange;
+    color: white;
+    text-decoration: none;
+  }
+  </style>
+
+
+  &nbsp;
+<script>
+   setTimeout(() => {
+    console.log('Timeout function executed');
+    const status = "{{ status }}";
+    console.log('Status:', status);
+    const section1 = document.querySelector('.section1');
+    const section2 = document.querySelector('.section2');
+    const section3 = document.querySelector('.section3');
+
+    if (section1) console.log('Processing Section found');
+    if (section2) console.log('Success Section found');
+    if (section3) console.log('Failure Section found');
+
+    section1.classList.add('d-none');
+
+    if (status === "success") {
+        section2.classList.remove('d-none');
+    } else {
+        section3.classList.remove('d-none');
+    }
+}, 3000);
+    </script>
+</div>
+
+</div>
+<!-- Contact End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary border-inner py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
