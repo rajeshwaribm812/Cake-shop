@@ -1,4 +1,4 @@
-# 🍰 Cake Studio
+# 🍰 Sprinkle Delights
 
 ## 📖 Description  
 **Sprinkle Delights** is an innovative web-based bakery management system designed to streamline operations for customers, bakery owners, and administrators. The platform offers an intuitive interface that enhances order management, inventory control, and customer satisfaction. Customers can browse an extensive catalog of cakes, customize their orders, and track them in real time, ensuring transparency and a delightful shopping experience. Bakery owners can efficiently manage stock, process orders, and maintain accurate records through the system.
@@ -58,13 +58,4 @@
 Open your browser and navigate to:  
 
 
-## Languages
 
-| Language  **: 0.1% (light blue dot)
-- **Batchfile**: 0. | Percentage |
-|------------|-----------|
-| 🟧 SCSS   0% (yellow-green dot)
-
-Above this section, the "Packages" area indicates that no packages have been published for this repository. The overall theme is dark, typical of | 52.5%     |
-| 🟥 HTML    | 39.2%     |
-| 🟦 Python (D GitHub’s dark mode interface.
